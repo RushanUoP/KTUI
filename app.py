@@ -6,10 +6,10 @@ is_logged_in = False
 # Connect to MySQL database
 def create_connection():
     conn = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="ktdemodatabase"
+        host="eu-cdbr-west-03.cleardb.net",
+        user="b76a0cd64214a2",
+        password="9e1e2d91",
+        database="heroku_53bd8d966df0668"
     )
     return conn
 
