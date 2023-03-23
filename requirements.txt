@@ -2,4 +2,4 @@ mysql
 streamlit
 pandas
 mysql.connector
-#session_state
+
