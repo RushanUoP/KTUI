@@ -71,6 +71,7 @@ def main():
         elif table == "Vessel":
             uvi_no = st.text_input("UVI No.")
             uvi_type = st.text_input("UVI Type")
+            orga_id = st.text_input("Organisation ID")
             vessel_name = st.text_input("Vessel Name")
             owner_name = st.text_input("Owner Name")
             op_name= st.text_input("Operator Name")
@@ -84,7 +85,7 @@ def main():
             #nat_reg_no = st.text_input("National Reg No.")
             if st.button("Submit"):
                 cursor = conn.cursor()
-                cursor.execute("INSERT INTO vessel (UVIno,UVIType,VesselName,OwnerName,OperatorName,FlagState, GearType,VesselLength,HoldCapacity,EM,EMFittingDate,IRCSign) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (uvi_no, uvi_type,vessel_name,owner_name,op_name,flag_state,gear_type,vessel_length,hold_capacity,em,em_date,irc_sign))
+                cursor.execute("INSERT INTO vessel (UVIno,UVIType,OrgId,VesselName,OwnerName,OperatorName,FlagState, GearType,VesselLength,HoldCapacity,EM,EMFittingDate,IRCSign) VALUES (%s,%s,(SELECT OrgId from organisation WHERE OrgId = %s),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (uvi_no, uvi_type,orga_id,vessel_name,owner_name,op_name,flag_state,gear_type,vessel_length,hold_capacity,em,em_date,irc_sign))
                 conn.commit()
                 st.success("Data inserted successfully!")
                 cursor.close()       
