@@ -18,6 +18,7 @@ conn = create_connection()
 
 
 def main():
+    st.set_page_config(page_title = "KT Database")
             
     st.write("# Welcome to KT Database Exploration")
     #session_state = SessionState.get(username="")
