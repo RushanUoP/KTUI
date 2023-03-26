@@ -35,7 +35,7 @@ def main():
     # Insert Data
     if menu == "Insert Data":
         st.title("Insert Data")
-        table = st.radio("Select a table", ("Organisation","Vessel","Species",     "Certification", "Certification Type", "Consultant", "Country"))
+        table = st.radio("Select Type of Data to Enter", ("Organisation","Vessel","Species",     "Certification", "Certification Type", "Consultant", "Country"))
         
         if table == "Organisation":
             org_id = st.text_input("Organization ID")
@@ -216,7 +216,7 @@ def main():
     # View Data
     elif menu == "View Data":
         st.title("View Data")
-        table = st.radio("Select a table", ("Organisation","Vessel","Species","Certification", "Certification Type", "Consultant","Country"))
+        table = st.radio("Select Type of Data to View", ("Organisation","Vessel","Species","Certification", "Certification Type", "Consultant","Country"))
         
         if table == "Organisation":
             cursor = conn.cursor()
