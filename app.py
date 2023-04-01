@@ -414,7 +414,7 @@ FROM
         `heroku_53bd8d966df0668`.`stakeholder`
     INNER JOIN organisation ON organisation.OrgId = stakeholder.StakeholderId) so ON sop.projectcode = so.projectcode""")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["StakeholderName","ProjectCode", "Client" ,"ProjectType", "ProjectName", "ProjectDescription", "TermsOfReference", "StartDate", "EndDate"]) 
+                df = pd.DataFrame(data, columns=["ProjectCode", "Client" ,"ProjectType", "ProjectName", "ProjectDescription", "TermsOfReference", "StartDate", "EndDate","StakeholderName",]) 
                 st.dataframe(df)
                 cursor.close()
 
