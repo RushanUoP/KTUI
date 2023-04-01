@@ -28,7 +28,7 @@ def add_logo(logo_path, width, height):
     modified_logo = logo.resize((width, height))
     return modified_logo
 
-my_logo = add_logo(logo_path="\KTLogo.png", width=150, height=160)
+my_logo = add_logo(logo_path="KTLogo.png", width=150, height=160)
 
 
 
