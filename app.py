@@ -231,7 +231,7 @@ def data():
             elif table == "Consultant":
                 c_id = st.text_input("ConsultantID")
                 c_type = st.text_input("Consultant Type")
-                c_pswd = st.text_input("Password")
+                #c_pswd = st.text_input("Password")
                 c_fname = st.text_input("First Name")
                 c_lname = st.text_input("Last Name")
                 c_designation = st.text_input("Designation")
@@ -240,7 +240,7 @@ def data():
                 
                 if st.button("Submit"):
                     cursor = conn.cursor()
-                    cursor.execute("INSERT INTO consultant (ConsultantID, ConsultantType, Pswd,ConsultantFirstName,ConsultantLastName,ConsultantDesignation, ConsultantReviews) VALUES (%s, %s, %s,%s,%s,%s,%s)", (c_id, c_type,c_pswd, c_fname,c_lname,c_designation, c_review))
+                    cursor.execute("INSERT INTO consultant (ConsultantID, ConsultantType, ConsultantFirstName,ConsultantLastName,ConsultantDesignation, ConsultantReviews) VALUES (%s, %s, %s,%s,%s,%s)", (c_id, c_type, c_fname,c_lname,c_designation, c_review))
                     conn.commit()
                     st.success("Data inserted successfully!")
                     cursor.close()
@@ -454,9 +454,9 @@ FROM
                 
             elif table == "Consultant":
                 cursor = conn.cursor()
-                cursor.execute("SELECT ConsultantID, ConsultantType, Pswd,ConsultantFirstName,ConsultantLastName,ConsultantDesignation, ConsultantReviews FROM consultant")
+                cursor.execute("SELECT ConsultantID, ConsultantType, ConsultantFirstName,ConsultantLastName,ConsultantDesignation, ConsultantReviews FROM consultant")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["ConsultantID", "ConsultantType", "Pswd","ConsultantFirstName","ConsultantLastName","ConsultantDesignation", "ConsultantReviews"])
+                df = pd.DataFrame(data, columns=["ConsultantID", "ConsultantType", "ConsultantFirstName","ConsultantLastName","ConsultantDesignation", "ConsultantReviews"])
                 st.dataframe(df)
                 cursor.close()
             elif table == "Stakeholder":
