@@ -62,7 +62,7 @@ def show_login_page():
 
 def main():
     
-    st.set_page_config("Key Traceability")
+    
     #first run will have nothing in session_state
     if 'loggedIn' not in st.session_state:
         st.session_state['loggedIn'] = False
@@ -476,5 +476,6 @@ FROM
                 cursor.close()
 
 if __name__ == "__main__":
+    st.set_page_config("Key Traceability")
     #if login_form():
         main()
