@@ -321,19 +321,7 @@ def data():
             
             if table == "Organisation":
                 cursor = conn.cursor()
-                cursor.execute("""SELECT 
-    `organisation`.`OrgId` AS 'Organisation Id',
-    `organisation`.`OrgType` AS 'Organisation Type',
-    `organisation`.`OrgName` AS 'Organisation Name',
-    `organisation`.`Address`,
-    `organisation`.`PostCode` AS 'Post Code',
-    `organisation`.`Country`,
-    `organisation`.`ContactPerson` AS 'Contact Person',
-    `organisation`.`Email`,
-    `organisation`.`ContactNo` AS 'Contact No.',
-    `organisation`.`VesselCount` AS 'No. of Vessels'
-FROM
-    `ktdemodatabase`.`organisation`""")
+                cursor.execute("SELECT * FROM organisation")
                 data = cursor.fetchall()
                 df = pd.DataFrame(data, columns=["OrgId","OrgType","OrgName","Address","PostCode","Country","ContactPerson","Email","ContactNo","VesselCount"]) 
                 st.dataframe(df)
