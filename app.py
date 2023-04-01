@@ -61,7 +61,7 @@ def show_login_page():
 
 
 def main():
-    st.session_state['loggedIn'] = False
+    
     
     #first run will have nothing in session_state
     if 'loggedIn' not in st.session_state:
