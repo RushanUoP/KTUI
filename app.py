@@ -117,7 +117,7 @@ def data():
         # Insert Data
         if menu == "Insert Data":
             st.title("Insert Data")
-            table = st.radio("Select Type of Data to Enter", ("Organisation","Vessel","Species",  "Project Vessel" ,"Vessel Regulatory Body" ,"Project","Project Team", "Certification", "Certification Type", "Stakeholder","Consultant"))
+            table = st.radio("Select Type of Data to Enter", ("Organisation","Species", "Project Type","Vessel" ,"Project Vessel" ,"Vessel Regulatory Body" ,"Project","Project Team", "Certification Type", "Certification", "Stakeholder","Consultant"))
             
             if table == "Organisation":
                 org_id = st.text_input("Organization ID")
