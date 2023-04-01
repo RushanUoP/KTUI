@@ -476,6 +476,6 @@ FROM
                 cursor.close()
 
 if __name__ == "__main__":
-    st.set_page_config("Key Traceability")
+    
     #if login_form():
     main()
