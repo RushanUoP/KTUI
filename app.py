@@ -1,6 +1,7 @@
 import streamlit as st
 import mysql.connector
 import pandas as pd
+from PIL import Image
 #from session_state import SessionState
 is_logged_in = False
 # Connect to MySQL database
