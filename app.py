@@ -370,7 +370,7 @@ SELECT `projectvessel`.`UVINo` as "UVI No.",
     `projectvessel`.`CrewList` as "Crew List",
     `projectvessel`.`AuditDate` as "Audit Date",
     `projectvessel`.`AuditRef` as "Audit Ref."
-FROM `ktdemodatabase`.`projectvessel`
+FROM `heroku_53bd8d966df0668`.`projectvessel`
 INNER JOIN `vessel` ON `vessel`.`UVINo` = `projectvessel`.`UVINo`
 """)
                 data = cursor.fetchall()
@@ -402,7 +402,7 @@ FROM
             `project`.`StartDate` AS 'Start Date',
             `project`.`EndDate` AS 'End Date'
     FROM
-        `ktdemodatabase`.`project`
+        `heroku_53bd8d966df0668`.`project`
     INNER JOIN Organisation ON organisation.OrgId = project.ClientId
     LEFT JOIN stakeholder ON stakeholder.ProjectCode = project.ProjectCode) sop
         LEFT JOIN
@@ -411,7 +411,7 @@ FROM
             `stakeholder`.`StakeholderId`,
             OrgName AS 'StakeholderName'
     FROM
-        `ktdemodatabase`.`stakeholder`
+        `heroku_53bd8d966df0668`.`stakeholder`
     INNER JOIN organisation ON organisation.OrgId = stakeholder.StakeholderId) so ON sop.projectcode = so.projectcode""")
                 data = cursor.fetchall()
                 df = pd.DataFrame(data, columns=["StakeholderName","ProjectCode", "Client" ,"ProjectType", "ProjectName", "ProjectDescription", "TermsOfReference", "StartDate", "EndDate"]) 
@@ -428,7 +428,7 @@ FROM
     `projectteam`.`ProjectRole` AS 'Role',
     `projectteam`.`No_of_Days` AS 'Days Spent'
 FROM
-    `ktdemodatabase`.`projectteam`
+    `heroku_53bd8d966df0668`.`projectteam`
         INNER JOIN
     Consultant ON Consultant.ConsultantId = projectteam.ConsultantId""")
                 data = cursor.fetchall()
