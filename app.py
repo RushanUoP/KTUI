@@ -339,7 +339,7 @@ def data():
 OrgName as "Organisation Name",
     `orgspecies`.`TargetSpecies` as "Target Species",
     `orgspecies`.`BaitSpecies` as "Bait Species"
-FROM `ktdemodatabase`.`orgspecies`
+FROM `heroku_53bd8d966df0668`.`orgspecies`
 INNER join organisation on organisation.OrgId=orgspecies.orgId""")		
                 data = cursor.fetchall()
                 df = pd.DataFrame(data, columns=["Organisation ID", "Organisation Name", "Target Species", "Bait Species"]) 
