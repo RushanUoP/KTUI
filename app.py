@@ -323,14 +323,14 @@ def data():
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM organisation")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["OrgId","OrgType","OrgName","Address","PostCode","Country","ContactPerson","Email","ContactNo","VesselCount"]) 
+                df = pd.DataFrame(data, columns=["Organisation ID","Organisation Type","Organisation Name","Address","PostCode","Country","Contact Person","Email","Contact No","Vessel Count"]) 
                 st.dataframe(df)
                 cursor.close()
             if table == "Vessel":
                 cursor = conn.cursor()
                 cursor.execute('SELECT UVINo, UVIType, v.OrgId, VesselName, OwnerName, v.OwnerCountry, OperatorName, FlagState, GearType, VesselLength, HoldCapacity, EM, EMFittingDate, IRCSign FROM vessel v INNER JOIN organisation o ON v.OrgId = o.OrgId INNER JOIN country c ON v.OwnerCountry =c.CountryId')		
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["UVINo", "UVIType", "OrgId", "VesselName", "OwnerName", "OwnerCountry", "OperatorName", "FlagState", "GearType", "VesselLength", "HoldCapacity", "EM", "EMFittingDate", "IRCSign"]) 
+                df = pd.DataFrame(data, columns=["UVINo", "UVI Type", "Organisation ID", "Vessel Name", "Owner Name", "Owner Country", "Operator Name", "Flag State", "Gear Type", "Vessel Length", "Hold Capacity", "EM", "EM FittingDate", "IRC Sign"]) 
                 st.dataframe(df)
                 cursor.close()
             if table == "Organisation Species":
@@ -351,7 +351,7 @@ INNER join organisation on organisation.OrgId=orgspecies.orgId""")
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM species")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["CommonName","ScientificName"]) 
+                df = pd.DataFrame(data, columns=["Common Name","Scientific Name"]) 
                 st.dataframe(df)
                 cursor.close()
               
@@ -374,7 +374,7 @@ FROM `heroku_53bd8d966df0668`.`projectvessel`
 INNER JOIN `vessel` ON `vessel`.`UVINo` = `projectvessel`.`UVINo`
 """)
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["UVINo","VesselName" ,"ProjectCode", "FishingArea","LandingPort","LastPortDate","LastTripObsvDate","CrewCount","CrewNationality","CrewList","AuditDate","AuditRef"]) 
+                df = pd.DataFrame(data, columns=["UVINo","Vessel Name" ,"Project Code", "Fishing Area","Landing Port","Last Port Date","Last TripObsv Date","Crew Count","Crew Nationality","Crew List","Audit Date","Audit Ref"]) 
                 st.dataframe(df)
                 cursor.close()
             
@@ -382,7 +382,7 @@ INNER JOIN `vessel` ON `vessel`.`UVINo` = `projectvessel`.`UVINo`
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM vesselregulatorybody")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["UVINo", "RFMOType","RegNo","StartDate","EndDate"]) 
+                df = pd.DataFrame(data, columns=["UVINo", "RFMOT ype","Registration No","Start Date","End Date"]) 
                 st.dataframe(df)
                 cursor.close()
             
@@ -414,7 +414,7 @@ FROM
         `heroku_53bd8d966df0668`.`stakeholder`
     INNER JOIN organisation ON organisation.OrgId = stakeholder.StakeholderId) so ON sop.projectcode = so.projectcode""")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["ProjectCode", "Client" ,"ProjectType", "ProjectName", "ProjectDescription", "TermsOfReference", "StartDate", "EndDate","StakeholderName",]) 
+                df = pd.DataFrame(data, columns=["Project Code", "Client" ,"Project Type", "Project Name", "Project Description", "Terms Of Reference", "Start Date", "End Date","Stakeholder Name",]) 
                 st.dataframe(df)
                 cursor.close()
 
@@ -432,7 +432,7 @@ FROM
         INNER JOIN
     Consultant ON Consultant.ConsultantId = projectteam.ConsultantId""")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["ProjectCode","ConsultantId" ,"ConsultantName","ConsultantDesignation","ProjectRole",  "No_of_Days"]) 
+                df = pd.DataFrame(data, columns=["Project Code","Consultant ID" ,"Consultant Name","Consultant Designation","Project Role",  "No_of_Days"]) 
                 st.dataframe(df)
                 cursor.close()
 
@@ -440,7 +440,7 @@ FROM
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM certification")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["Company","Vessel", "CertificationName", "CertificationNo"])
+                df = pd.DataFrame(data, columns=["Company","Vessel", "Certification Name", "Certificatio nNo"])
                 st.dataframe(df)
                 cursor.close()
                 
@@ -448,7 +448,7 @@ FROM
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM certificationtype")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["CertificationName","CertificateDescription"])
+                df = pd.DataFrame(data, columns=["Certification Name","Certificate Description"])
                 st.dataframe(df)
                 cursor.close()
                 
@@ -456,14 +456,14 @@ FROM
                 cursor = conn.cursor()
                 cursor.execute("SELECT ConsultantID, ConsultantType, ConsultantFirstName,ConsultantLastName,ConsultantDesignation, ConsultantReviews FROM consultant")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["ConsultantID", "ConsultantType", "ConsultantFirstName","ConsultantLastName","ConsultantDesignation", "ConsultantReviews"])
+                df = pd.DataFrame(data, columns=["Consultant ID", "Consultant Type", "Consultant FirstName","Consultant LastName","Consultant Designation", "Consultant Reviews"])
                 st.dataframe(df)
                 cursor.close()
             elif table == "Stakeholder":
                 cursor = conn.cursor()
                 cursor.execute("SELECT *FROM stakeholder")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["ProjectCode", "StakeholderId"])
+                df = pd.DataFrame(data, columns=["Project Code", "Stakeholder ID"])
                 st.dataframe(df)
                 cursor.close()
 
@@ -471,7 +471,7 @@ FROM
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM country")
                 data = cursor.fetchall()
-                df = pd.DataFrame(data, columns=["CountryId",  "CountryName"])
+                df = pd.DataFrame(data, columns=["Country ID",  "Country Name"])
                 st.dataframe(df)
                 cursor.close()
 
